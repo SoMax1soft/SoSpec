@@ -22,7 +22,7 @@ public class Main extends JavaPlugin implements CommandExecutor {
 
     @Override
     public void onEnable() {
-        saveDefaultConfig(); // Загружает конфигурацию, если она не существует
+        saveDefaultConfig();
         loadConfigValues();
 
         getLogger().info("");
@@ -52,11 +52,11 @@ public class Main extends JavaPlugin implements CommandExecutor {
                 Player player = (Player) sender;
                 UUID playerUUID = player.getUniqueId();
 
-                // Проверка на задержку
+
                 if (specCooldowns.containsKey(playerUUID)) {
                     long lastUsed = specCooldowns.get(playerUUID);
                     long currentTime = System.currentTimeMillis();
-                    long cooldownTime = 60000; // 1 минута в миллисекундах
+                    long cooldownTime = 60000;
 
                     if (currentTime - lastUsed < cooldownTime) {
                         long timeLeft = (cooldownTime - (currentTime - lastUsed)) / 1000;
